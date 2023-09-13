@@ -1,0 +1,20 @@
+students = ["John", "Sally", "Frank", "Holly", "James"]
+student = input("Please enter the name of a student: ")
+
+while student not in students:
+    print("Student not found!")
+    student = input("Please enter the name of a student: ")
+
+studentAverage = int(input("Please enter student's average: "))
+average = studentAverage
+
+if 90 <= studentAverage <= 100:
+    print(student, studentAverage, "You got A grade")
+if 80 <= studentAverage <= 89:
+    print(student, studentAverage, "You got B grade")
+if 70 <= studentAverage <= 79:
+    print(student, studentAverage, "You got C grade")
+if 60 <= studentAverage <= 69:
+    print(student, studentAverage, "You got D grade")
+if 0 <= studentAverage <= 59:
+    print(student, studentAverage, "You got F grade")
