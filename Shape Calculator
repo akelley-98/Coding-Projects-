@@ -1,0 +1,97 @@
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+
+// Abstract class representing a shape
+abstract class Shape {
+    abstract double calculateArea();
+}
+
+// Rectangle class extending Shape
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double calculateArea() {
+        return length * width;
+    }
+}
+
+// Application class with JavaFX front end
+public class ShapeCalculator extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        // Create labels, text fields, and button
+        Label title = new Label("Rectangle Area Calculator");
+        title.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+        
+        Label lengthLabel = new Label("Enter Length:");
+        TextField lengthField = new TextField();
+        
+        Label widthLabel = new Label("Enter Width:");
+        TextField widthField = new TextField();
+        
+        Button calculateButton = new Button("Calculate");
+        
+        Label resultLabel = new Label();
+        resultLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+
+        // Set the event handler for the button
+        calculateButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    // Get user input from text fields
+                    double length = Double.parseDouble(lengthField.getText());
+                    double width = Double.parseDouble(widthField.getText());
+
+                    // Create a Rectangle object
+                    Rectangle rectangle = new Rectangle(length, width);
+
+                    // Calculate the area
+                    double area = rectangle.calculateArea();
+
+                    // Update the label text
+                    resultLabel.setText("The area of the rectangle is: " + area);
+                } catch (NumberFormatException e) {
+                    // Invalid input
+                    resultLabel.setText("Invalid input. Please enter valid numbers.");
+                }
+            }
+        });
+
+        // Create a VBox layout and add the labels, text fields, button, and result label
+        VBox root = new VBox();
+        root.setAlignment(Pos.CENTER);
+        root.setSpacing(10);
+        root.setPadding(new Insets(20));
+        root.getChildren().addAll(title, lengthLabel, lengthField, widthLabel, widthField, calculateButton, resultLabel);
+
+        // Create the scene and set it on the stage
+        Scene scene = new Scene(root, 400, 300);
+        primaryStage.setTitle("Shape Calculator");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
