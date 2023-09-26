@@ -1,0 +1,75 @@
+# welcomes the user.
+print("Welcome to my computer quiz!")
+
+# asks user if they want to play.
+playing = input("Do you want to play my game? (Enter yes or no): ")
+
+# determines whether player said yes or no
+if playing.lower() != "yes":
+    print("Okay...Have a great day!")
+    quit() # if the player says no
+
+# if the player says yes
+print("Okay! Let's play! :)")
+score = 0 # keeps track of number of questions answered right
+
+# asks first question
+answer = input("What does CPU stand for? ")
+if answer.lower() == "central processing unit":
+    print("Correct! Good job!") # if user enters the correct answer
+    score += 1 # adds 1 to score variable
+else:
+    print("Oops...that is not correct.") # if player enters the wrong answer
+
+answer = input("Can a computer run without a graphics card? ")
+if answer.lower() == "no":
+    print("Correct! Good job!")
+    score += 1
+else:
+    print("Oops...that is not correct.")
+
+answer = input("What does GPU stand for? ")
+if answer.lower() == "graphics processing unit":
+    print("Correct! Good job!")
+    score += 1
+else:
+    print("Oops...that is not correct.")
+
+answer = input("List the bytes in order of size? ")
+if answer.lower() == "kilobyte megabyte gigabyte terabyte":
+    print("Correct! Good job!")
+    score += 1
+else:
+    print("Oops...that is not correct.")
+
+answer = input("What does RAM stand for? ")
+if answer.lower() == "random access memory":
+    print("Correct! Good job!")
+    score += 1
+else:
+    print("Oops...that is not correct.")
+
+answer = input("What was the name of the first computer company? ")
+if answer.lower() == "electronic controls company":
+    print("Correct! Good job!")
+    score += 1
+else:
+    print("Oops...that is not correct.")
+
+answer = input("What does PSU stand for? ")
+if answer.lower() == "power supply unit":
+    print("Correct! Good job!")
+    score += 1
+else:
+    print("Oops...that is not correct.")
+
+# tells player how many questions they got right and the percentage
+print("You got " + str(score) + " questions right!")
+print("You got " + str((score / 7) * 100) + "%!")
+
+
+
+
+    
+
+
